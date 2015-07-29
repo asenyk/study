@@ -1,0 +1,55 @@
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <style> 
+#forDelete {font-size: 18px; margin: 20px 0px;}
+#div1 {font-size:30px; color: red;}
+BUTTON {
+ padding:5px;
+ margin-left: 15px;
+}
+
+
+
+
+ </style>
+ <body>
+<script>
+    var newDiv;
+    var newContent;
+    var deleteDiv;
+
+    function addElement() {
+        var todo = document.getElementById("text").value;
+        var newDiv = document.createElement("div");
+        newDiv.id = 'forDelete';
+        var newContent = document.createTextNode(todo);
+        var btn = document.createElement("BUTTON");
+        var t = document.createTextNode("Not gonna do it");
+        newDiv.appendChild(newContent);
+        newDiv.appendChild(btn);
+        btn.appendChild(t);
+        btn.setAttribute("onClick", "myDelete()");
+        var currentDiv = document.getElementById("div1"); /*and thats how i done it after i had function ready*/
+        document.body.insertBefore(newDiv, currentDiv);
+        console.log(todo); //for test
+    }
+
+    function myDelete() {
+        var deleteDiv = document.getElementById("forDelete")
+        console.log(deleteDiv);
+        document.getElementById("forDelete").remove();
+    }
+  </script>
+
+  <input type="text" id="text"/>
+  <button onclick="addElement()">add stuff</button>
+  <button onclick="myDelete()">delete stuff</button> <!-- will delete top element -thats how i done it at first-->
+  <div id="div1">To Do List!!</div>
+
+
+ </body>
+</html>
+
